@@ -4,5 +4,6 @@
 .\#*
 /build
 /dist
+/doc
 /MANIFEST
 /_trial_temp

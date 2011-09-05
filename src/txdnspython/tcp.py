@@ -91,19 +91,29 @@ class TcpDnsClientFactory(ClientFactory):
 
 class TcpDnsClient(object):
     def __init__(self, reactor, address, port = 53, one_rr_per_rrset = False, source = '', source_port = 0):
-        """Initialize the client object.
+        """
+        Initialize the client object.
         
-        @param reactor: reactor
-        @type reactor: twisted.internet.ReactorBase or subclass
+        @param reactor: Twisted reactor - used to open TCP connections and schedule timeouts
+        @type reactor: object that implements
+        L{twisted.internet.interfaces.IReactorTCP} (used to open TCP
+        connections to DNS servers) and
+        L{twisted.internet.interfaces.IReactorTime} (used to schedule
+        timeouts)
+
         @param address: where to send the message
         @type address: string containing an IPv4 address
+
         @param port: The port to which to send the message.  The default is 53.
         @type port: int
+
         @param source: source address.  The default is the IPv4 wildcard address.
         @type source: string
+
         @param source_port: The port from which to send the message.
         The default is 0.
         @type source_port: int
+
         @param one_rr_per_rrset: Put each RR into its own RRset
         @type one_rr_per_rrset: bool
         """

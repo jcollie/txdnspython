@@ -37,5 +37,22 @@ examples/simple_udp_query.py):
     query_response.addErrback(printerror)
     reactor.run()
 
+Running the Examples
+--------------------
+
+The example code can be run like this:
+
+    PYTHONPATH=src python examples/simple_udp_query.py
+
+Generating API Documentation
+----------------------------
+
+From the root of the source tree run this command:
+
+    PYTHONPATH=src epydoc --html txdnspython
+
+You'll need [epydoc][3] installed of course.
+
 [1]: http://www.dnspython.org/ "dnspython"
 [2]: http://twistedmatrix.com/ "Twisted"
+[3]: http://epydoc.sourceforge.net/ "epydoc"
