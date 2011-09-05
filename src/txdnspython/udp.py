@@ -35,7 +35,7 @@ class UdpDnsClientProtocol(txdnspython.generic.GenericDnsClientProtocol, Datagra
         self.transport.connect(self.address, self.port)
         
     def datagramReceived(self, data, (address, port)):
-        self.process_response(data)
+        self._process_response(data)
 
     def send_query(self, query, query_response, timeout = None):
         wire_data = query.to_wire()
@@ -50,7 +50,7 @@ class UdpDnsClient(object):
         self.protocol = UdpDnsClientProtocol(self.reactor, address, port, one_rr_per_rrset)
         self.reactor.listenUDP(source_port, self.protocol, interface = source)
 
-    def send_query(self, query, timeout):
+    def send_query(self, query, timeout = None):
         query_response = defer.Deferred()
         self.protocol.send_query(query, query_response, timeout)
         return query_response
